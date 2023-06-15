@@ -50,9 +50,66 @@ function saludarObjType({name,age}:{name:string, age:number}){
     console.log(`Hola ${name}, tienes ${age} años`);
 }
 
+// In this case typescript know what type will return 
+// the last :string is saying that the function must return a string value
+function saludarReturn({name,age}:{name:string, age:number}):string{
+    console.log(`Hola ${name}, tienes ${age} años`);
+    return name;
+}
 
+// Function like paramenter, bellow I telling for typescript that the function
+// need at lest one string parameter and must return nothing
+const sayHiFromFunction = (fn:(name:string)=>void)=>{
+    fn("Miguel")
+}
+const sayHi = (name:string)=>{
+    console.log(`Hola ${name}`)
+}
 
+sayHiFromFunction(sayHi)
+
+// Type Arrow functions:
+const sumar = (a: number, b:number): number =>{
+    return a +b;
+}
+
+// Use NEVER when function never return something instead of any that indicades the will or wont a return a value
+function throwError(message: string): never{
+    throw new Error(message)
+}
+
+//Inference data in anonymous functions, in this case typescripts knows
+// what type of parameter is passing for function because he knows
+// what type of values is in avengers or the  array value. 
+const avengers = ['Spidey','Hulk','Avengers']
+avengers.forEach(function (avenger){
+    console.log(avenger.toUpperCase());
+})
+
+//TYPE ALIAS, always use pascal case specially in this day.
+type Hero = {
+    id?:number;
+    name: string,
+    age: number,
+    isActive?: boolean
+}
+
+let hero: Hero = {
+    name:'thor',
+    age:1500
+}
+
+// I indicating that createHero must return a data Hero type.
+function createHero(hero:Hero): Hero{
+    const {name, age} = hero;
+    return {name, age, isActive: true};
+}
+
+const thor = createHero({name:'thor',age: 15000})
+// the ask symbol is for validate if the property existd and after that you can use it. the property. 
+thor.id?.toString();
 
 //RECOMENDATIONS
 // Type less types as you can, let the inference typescript work
 // Avoid any type and unknown
+// Avoid use Function for type a function.
