@@ -86,9 +86,13 @@ avengers.forEach(function (avenger){
     console.log(avenger.toUpperCase());
 })
 
-//TYPE ALIAS, always use pascal case specially in this day.
+
+// TEMPLATE UNION TYPES
+type HeroId = `${string}-${string}-${string}-${string}-${string}`
+
+// Types hero always use pascal Case.
 type Hero = {
-    id?:number;
+    readonly id?:HeroId;
     name: string,
     age: number,
     isActive?: boolean
@@ -102,11 +106,16 @@ let hero: Hero = {
 // I indicating that createHero must return a data Hero type.
 function createHero(hero:Hero): Hero{
     const {name, age} = hero;
-    return {name, age, isActive: true};
+    return {
+        id:crypto.randomUUID(),
+        name, 
+        age, 
+        isActive: true
+    };
 }
 
 const thor = createHero({name:'thor',age: 15000})
-// the ask symbol is for validate if the property existd and after that you can use it. the property. 
+// the ask symbol is for validate if the property exist and after that you can use it. the property. 
 thor.id?.toString();
 
 //RECOMENDATIONS
