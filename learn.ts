@@ -172,6 +172,16 @@ const addressTwitch: Address = {
     city:'Twitch'
 }
 
+// Type from function
+function createAddress(){
+    return{
+        planet:'Tierra',
+        city:'Barcelona'
+    }
+}
+
+type AddressFromFunction = ReturnType<typeof createAddress>
+
 //RECOMENDATIONS
 // Type less types as you can, let the inference typescript work
 // Avoid any type and unknown
