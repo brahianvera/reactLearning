@@ -182,6 +182,29 @@ function createAddress(){
 
 type AddressFromFunction = ReturnType<typeof createAddress>
 
+//ARRAYS 
+//String array
+let languages = []; //type never arrays
+let languageString: string[] = [];// string array
+languageString.push('JavaScript');
+languageString.push('JavaScript');
+languageString.push('JavaScript');
+languageString.push('JavaScript');
+//languageString.push(2); this will throw error
+
+//String and numbers array
+let languagesStringNumber: (string | number)[] = [];
+languagesStringNumber.push('JavaScript');
+languagesStringNumber.push(1);
+languagesStringNumber.push(22);
+
+
+//HerosBasicInfo's Array
+const heroWhitBasicInfo: heroBasicInfo[] = [];
+
+
+
+
 //RECOMENDATIONS
 // Type less types as you can, let the inference typescript work
 // Avoid any type and unknown
