@@ -202,10 +202,40 @@ languagesStringNumber.push(22);
 //HerosBasicInfo's Array
 const heroWhitBasicInfo: heroBasicInfo[] = [];
 
+//MATRICES 
+/*
+[
+    ['X','O','X'],
+    ['O','X','X'],
+    ['X','O','O']
+]
+*/
+
+type CellValue = 'X' | 'O' | '';
+//This a TUPLA, that means the tupla has a fixed limit of size
+type GameBoard = [
+    [CellValue,CellValue,CellValue],
+    [CellValue,CellValue,CellValue],
+    [CellValue,CellValue,CellValue]
+]
+
+const gameBoard:CellValue[][] = [
+    ['X','O','X'],
+    ['O','X','O'],
+    ['X','O','O']
+]
+//another TUPLAS example
+//type State = [string,(newName:string)=>void];
+//const [hero,setState]: State = useState('thor');
+
+// other TUPLAS example
+type RGB = [number,number,number];
+const rgb: RGB = [2,5,6];
+
 
 
 
 //RECOMENDATIONS
 // Type less types as you can, let the inference typescript work
 // Avoid any type and unknown
-// Avoid use Function for type a function.
+// Avoid use Function for type a function.\
