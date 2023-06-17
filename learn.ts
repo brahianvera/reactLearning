@@ -159,6 +159,18 @@ const addressHero: HeroPropertiesAddress['address'] = {
     city:'Madrid'
 }
 
+// TYPE FROM VALUE
+const address = {
+    planet:'Earth',
+    city:'Madrid'
+}
+
+type Address = typeof address;
+
+const addressTwitch: Address = {
+    planet:'mars',
+    city:'Twitch'
+}
 
 //RECOMENDATIONS
 // Type less types as you can, let the inference typescript work
