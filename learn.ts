@@ -89,14 +89,29 @@ avengers.forEach(function (avenger){
 
 // TEMPLATE UNION TYPES
 type HeroId = `${string}-${string}-${string}-${string}-${string}`
+// UNION TYPES: variables of this type will just have the below options 
+type HeroPowerScale = 'local' | 'planetary' | 'galactic' | 'universal' | 'multiversal'
+
+// Example of union types
+let ann : number | string
+ann = 3;
+
 
 // Types hero always use pascal Case.
-type Hero = {
-    readonly id?:HeroId;
+// whit ? indicates that the value or property is optional
+
+type heroBasicInfo = {
     name: string,
-    age: number,
-    isActive?: boolean
+    age: number
 }
+type HeroProperties = {
+    readonly id?:HeroId,
+    isActive?:boolean,
+    powerScale?: HeroPowerScale
+}
+
+// INTERSECTION TYPES, so it's possible join two types. 
+type Hero = heroBasicInfo & HeroProperties;
 
 let hero: Hero = {
     name:'thor',
@@ -104,7 +119,7 @@ let hero: Hero = {
 }
 
 // I indicating that createHero must return a data Hero type.
-function createHero(hero:Hero): Hero{
+function createHero(input:heroBasicInfo): Hero{
     const {name, age} = hero;
     return {
         id:crypto.randomUUID(),
@@ -117,6 +132,33 @@ function createHero(hero:Hero): Hero{
 const thor = createHero({name:'thor',age: 15000})
 // the ask symbol is for validate if the property exist and after that you can use it. the property. 
 thor.id?.toString();
+thor.powerScale = "multiversal"
+// this will throw an error because powerScale is HeroPowerSclae type and that type just admits the nexts value 'local' | 'planetary' | 'galactic' | 'universal' | 'multiversal'
+//thor.powerScale = 'bajo'
+
+
+//Template union types 
+type HexadecimalColor = `#${string}`;
+
+//below line will throw an error because the string doesn't cumplite whit the format.
+//const color: HexadecimalColor = '0033ff';
+const color2: HexadecimalColor = '#0033ff';
+
+
+//TYPE INDEXING 
+type HeroPropertiesAddress ={
+    isActive:boolean,
+    address:{
+        planet:string,
+        city:string
+    }
+}
+
+const addressHero: HeroPropertiesAddress['address'] = {
+    planet: 'Earth',
+    city:'Madrid'
+}
+
 
 //RECOMENDATIONS
 // Type less types as you can, let the inference typescript work
