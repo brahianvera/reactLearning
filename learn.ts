@@ -263,6 +263,14 @@ function mostrarMensaje(tipoDeError: ERROR_TYPES){
     }
 }
 
+// TYPE ASSERTIONS
+
+//the next example show that in most of cases is better use instanceOf instead of TYPE ASSERTIOS
+// so let the type inference do the work.
+const canvas = document.getElementById('span');
+if(canvas instanceof HTMLCanvasElement){
+    const ctx = canvas.getContext('2d');
+}
 
 
 //RECOMENDATIONS
