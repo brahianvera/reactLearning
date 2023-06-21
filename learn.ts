@@ -232,10 +232,41 @@ const gameBoard:CellValue[][] = [
 type RGB = [number,number,number];
 const rgb: RGB = [2,5,6];
 
+//ENUMS: Use collection in limited data
+const enum ERROR_TYPES{
+    NOT_FOUND,
+    UNAUTHORIZED,
+    FORBIDDEN
+}
+// ways to use ENUMS:
+/* usually this ways is the most used, because create less code so use it when the code is runing in your own code.
+const enum ERROR_TYPES{
+    NOT_FOUND = 'notFound',
+    UNAUTHORIZED = 'unauthorized',
+    FORBIDDEN = 'forbidden'
+}*/
+/* Use this when you are devolping a library and needs that library is consuming by an external code
+enum ERROR_TYPES{
+    NOT_FOUND = 'notFound',
+    UNAUTHORIZED = 'unauthorized',
+    FORBIDDEN = 'forbidden'
+}*/
+
+
+function mostrarMensaje(tipoDeError: ERROR_TYPES){
+    if(tipoDeError === ERROR_TYPES.NOT_FOUND){
+        console.log('No se encuentra el recurso');
+    }else if( tipoDeError === ERROR_TYPES.UNAUTHORIZED){
+        console.log('No tienes permisos para acceder');
+    }else if( tipoDeError === ERROR_TYPES.FORBIDDEN){
+        console.log("No tienes permisos para acceder");
+    }
+}
 
 
 
 //RECOMENDATIONS
 // Type less types as you can, let the inference typescript work
 // Avoid any type and unknown
-// Avoid use Function for type a function.\
+// Avoid use Function for type a function.
+// Tuplas are mutable
