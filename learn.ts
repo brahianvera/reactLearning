@@ -272,7 +272,8 @@ if(canvas instanceof HTMLCanvasElement){
     const ctx = canvas.getContext('2d');
 }
 
-
+// use typeof for types strings, boolean, numbers
+// use instanceof instances.
 
 //RECOMENDATIONS
 // Type less types as you can, let the inference typescript work
