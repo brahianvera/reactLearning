@@ -275,6 +275,37 @@ if(canvas instanceof HTMLCanvasElement){
 // use typeof for types strings, boolean, numbers
 // use instanceof instances.
 
+//INTERFACES
+
+interface Product {
+    id: number
+    name: string
+    price: number
+    quantity: number
+}
+
+interface Sneaker extends Product{
+    talla:number
+}
+
+interface ShoppingCart{
+    totalPrice: number
+    products: (Product | Sneaker)[]
+}
+
+const cart: ShoppingCart = {
+    totalPrice:100,
+    products:[
+        {
+            id:100,
+            name:"Brahian",
+            price:10000,
+            quantity:2,
+            talla:40
+        }
+    ]
+}
+
 //RECOMENDATIONS
 // Type less types as you can, let the inference typescript work
 // Avoid any type and unknown
