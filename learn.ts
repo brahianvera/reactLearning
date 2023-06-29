@@ -275,8 +275,7 @@ if(canvas instanceof HTMLCanvasElement){
 // use typeof for types strings, boolean, numbers
 // use instanceof instances.
 
-//INTERFACES
-
+//INTERFACES is very similar to types.
 interface Product {
     id: number
     name: string
