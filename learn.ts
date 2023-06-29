@@ -276,6 +276,7 @@ if(canvas instanceof HTMLCanvasElement){
 // use instanceof instances.
 
 //INTERFACES is very similar to types.
+//Use interfaces when you need to defined an class
 interface Product {
     id: number
     name: string
@@ -304,6 +305,21 @@ const cart: ShoppingCart = {
         }
     ]
 }
+
+// For below reason use interface could be a bad idea because you can extends an interface automatically and that could be an error in 
+// big projects instead of that you can use types their it won't let us extends automatically.
+interface CarritoOps{
+    add:(product: Product) => void,
+    remove: (id:number) => void,
+}
+
+interface CarritoOps{
+    clear: ()=> void
+}
+// ---------------------------------------------------------------------------------------------------
+
+//Narrowing
+
 
 //RECOMENDATIONS
 // Type less types as you can, let the inference typescript work
